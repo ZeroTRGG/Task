@@ -51,14 +51,13 @@ class Critter:
               ", и сейчас я чувствую себя", self.mood)
         self.__pass_time()
 
-    def number(self, number=-1):
-        
-        while number<0:
-          number=int(input('Сколько? '))
-        return number 
+    def ask(self, ask=-1):
+        while ask<0:
+          ask=int(input('Сколько? '))
+        return ask 
  
     def eat(self, food=0):
-        food = self.number()
+        food = self.ask()
         print("Мрр... Спасибо")
         self.hunger -= food
         if self.hunger < 0:
@@ -66,7 +65,7 @@ class Critter:
         self.__pass_time()
 
     def play(self, fun=0):
-        fun = self.number()
+        fun = self.ask()
         print("Уииии!")
         self.boredom -= fun
         if self.boredom < 0:
