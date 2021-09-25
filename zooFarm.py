@@ -1,128 +1,127 @@
 import random
-class Critter:
-    """Виртуальный питомец"""
+class Farm:
+    """Ферма"""
     total = 0
 
     @staticmethod   
     def status():
         print("Общее число зверюшек", Critter.total)
-
-    def __init__(self, name, hunger = 0, boredom = 0):
-        self.__name = name
+        
+    def __init__(self, name):
+        self.name = name
         self.hunger = random.randint(0, 16)
         self.boredom = random.randint(0, 16)
-        Critter.total += 1
-
+     
     def __str__(self):
-        ans = 'Объект класса Critter\n'
-        ans += 'имя: ' + self.name + '\n'
-        return ans
-    
+        rep = 'Имя: ' + self.name + '\n' + 'Голод: ' + str(self.hunger) + '\n' + 'Щастье: ' + str(self.boredom)
+        return rep
+
     def __pass_time(self):
         self.hunger += 1
         self.boredom += 1
 
     @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, new_name):
-        if new_name == "":
-            print("Имя зверушки не может быть пустой строкой.")
-        else:
-            self.__name = new_name
-            print("Имя успешно изменено.")
-
-    @property
     def mood(self):
         unhappiness = self.hunger + self.boredom
         if unhappiness < 5:
-            m = "прекрасно"
+            f = "Прекрасно"
         elif 5 <= unhappiness <= 10:
-            m = "неплохо"
+            f = "Нормально"
         elif 11 <= unhappiness <= 15:
-            m = "не сказать чтобы хорошо"
+            f = "Плоховато"
         else:
-            m = "ужасно"
-        return m
+            f = "Ужасно"
+        return f
 
     def talk(self):
-        print("Меня зовут", self.name, 
-              ", и сейчас я чувствую себя", self.mood)
+        print("Я", self.name, "и я чуствую себя", self.mood)
         self.__pass_time()
-        
-    def number(self, number=-1):        
-        while number<0:
-          number=int(input('Сколько? '))
-        return number 
 
-    def eat(self, food = 4):
-        print("Мррр...  Спасибо!")
+    @staticmethod 
+    def number(number=None, x=0, f=0):
+        while x==0:
+          number=input('Сколько?')
+          try:
+           f=int(number)
+           x=1
+          except:
+            print('Повторите снова')
+       
+        if int(number)<0:
+          number=0
+        else:
+          number=f
+        return number
+         
+    def eat(self, food):
         self.hunger -= food
         if self.hunger < 0:
             self.hunger = 0
         self.__pass_time()
 
-    def play(self, fun = 4):
-        print("Уиии!")
+    def play(self, fun):
         self.boredom -= fun
         if self.boredom < 0:
             self.boredom = 0
         self.__pass_time()
 
 def main():
-    crit_name = input("Как в хотите назвать петуха?")
-    cock = Critter(crit_name)
-    crit_name = input("Как в хотите назвать кота? ")
-    cat = Critter(crit_name)
-    crit_name = input("Как в хотите назвать собаку? ")
-    dog = Critter(crit_name)
+    crit_name = input("Как хотите назвать петуха? ")
+    cock = Farm(crit_name)
+    crit_name = input("Как хотите назвать кота? ")
+    cat = Farm(crit_name)
+    crit_name = input("Как хотите назвать собаку? ")
+    dog = Farm(crit_name)
 
-    choice = None  
+    choice = None
+    numb=None
     while choice != "0":
         print \
         ("""
-        Моя зверюшка
-    
+        Farm Caretaker
+ 
         0 - Выйти
-        1 - Узнать о самочувствии зверюшки
-        2 - Покормить зверюшку
-        3 - Поиграть со зверюшкой
+        1 - Самочуствие питомцев
+        2 - Покормить
+        3 - Поиграть
         """)
-    
-        choice = input("Ваш выбор: ")
+ 
+        choice = input("Choice: ")
         print()
 
-        # выход
         if choice == "0":
-            print("До свидания.")
+            print("Пока.")
 
-        # беседа со зверюшкой
         elif choice == "1":
             cock.talk()
+            print('Кукарику \n')
             cat.talk()
+            print('Мяуууууу \n')
             dog.talk()
-        
-        # кормление зверюшки
+            print('Гав-Гав-Гав \n')
+     
         elif choice == "2":
-            numb=Critter
-            numb.number(self)
+            numb=Farm.number()
             cock.eat(numb)
+            print("Кукарику.  Спасибо тебе")
             cat.eat(numb)
+            print("Мяу.  Спасибо тебе")
             dog.eat(numb)
-         
-        # игра со зверюшкой
+            print("Гав. Спасибо тебе")
+
         elif choice == "3":
-            numb=Critter
-            numb.number(self)
+            numb=Farm.number()
             cock.play(numb)
             cat.play(numb)
             dog.play(numb)
-            print("Увиии")
+            print('Увиииииииии!!!!')
 
-        # непонятный пользовательский ввод
+        elif choice =="4":
+            print(cock)
+            print(cat)
+            print(dog)
+            
         else:
-            print("Извините, в меню нет пункта", choice)
-    
+            print("\nПростите, но пункта", choice, "не существует")
+
 main()
