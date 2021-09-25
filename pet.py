@@ -56,7 +56,7 @@ class Critter:
           ask=int(input('Сколько? '))
         return ask 
  
-    def eat(self, food=0):
+    def eat(self):
         food = self.ask()
         print("Мрр... Спасибо")
         self.hunger -= food
@@ -64,7 +64,7 @@ class Critter:
             self.hunger = 0
         self.__pass_time()
 
-    def play(self, fun=0):
+    def play(self):
         fun = self.ask()
         print("Уииии!")
         self.boredom -= fun
@@ -100,7 +100,6 @@ def main():
         
         # кормление зверюшки
         elif choice == "2":
-            x = int(input())
             crit.eat()
          
         # игра со зверюшкой
