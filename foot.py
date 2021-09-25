@@ -1,52 +1,26 @@
 class Football:
-
     def team1(self):
-        print('КАНЕВЦЕВ')
+        print('КАНЕВЦЕВ', 'номер 1')
     def team2(self):
-        print('МИЗЮК')
+        print('МИЗЮК', 'номер 2')
     def team3(self):
-        print('ШОПИН')
+        print('ШОПИН', 'номер 3')
     def team4(self):
-        print('НЕХТИЙ')
+        print('НЕХТИЙ', 'номер 4')
     def team5(self):
-        print('ГОРБУНОВ')
+        print('ГОРБУНОВ', 'номер 5')
     def team6(self):
-        print('ДЕМЧЕНКО')
+        print('ДЕМЧЕНКО', 'номер 6')
     def team7(self):
-        print('ЛЮЛЬКА')
+        print('ЛЮЛЬКА', 'номер 7')
     def team8(self):
-        print('САРАПИЙ')
+        print('САРАПИЙ', 'номер 8')
     def team9(self):
-        print('ФОМИН')
+        print('ФОМИН', 'номер 9')
     def team10(self):
-        print('РОМАНЮК')
+        print('РОМАНЮК', 'номер 10')
     def team11(self):
-        print('ПОРОХ')
-    def num1(self):
-        print('1')
-    def num2(self):
-        print('2')
-    def num3(self):
-        print('27')
-    def num4(self):
-        print('7')
-    def num5(self):
-        print('20')
-    def num6(self):
-        print('17')
-    def num7(self):
-        print('22')
-    def num8(self):
-        print('5')
-    def num9(self):
-        print('86')
-    def num10(self):
-        print('47')
-    def num11(self):
-        print('31')
-    
-
-
+        print('ПОРОХ', 'номер 11')
 
 def main():
     foot=Football()
@@ -61,20 +35,4 @@ def main():
     foot.team9()
     foot.team10()
     foot.team11()
-    foot.num1()
-    foot.num2()
-    foot.num3()
-    foot.num4()
-    foot.num5()
-    foot.num6()
-    foot.num7()
-    foot.num8()
-    foot.num9()
-    foot.num10()
-    foot.num11()
-main() 
-
-
-
-
-    
+main()
