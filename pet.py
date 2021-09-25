@@ -38,16 +38,12 @@ class Critter:
         unhappiness = self.hunger + self.boredom
         if unhappiness < 5:
             m = "прекрасно"
-            self.__pass_time()
         elif 5 <= unhappiness <= 10:
             m = "неплохо"
-            self.__pass_time()
         elif 11 <= unhappiness <= 15:
             m = "не сказать чтобы хорошо"
-            self.__pass_time()
         else:
             m = "ужасно"
-            self.__pass_time()
         return m
 
     def talk(self):
@@ -55,43 +51,27 @@ class Critter:
               ", и сейчас я чувствую себя", self.mood)
         self.__pass_time()
 
-    def eat(self, food = 4):
-        x1=int(input('Сколько вы хотите корма дать?'))
-        if x1 <= 10 and x1 > 0:
-            print("Мррр...  Спасибо!")
-            self.hunger -= food
-            if self.hunger < 0:
-                self.hunger -= x1
-            self.__pass_time()
-        elif x1 <=0:
-            print('Это слишком мало... Зверюшка недовольна')
-            self.__pass_time()
-        elif x1 > 10:
-            print('Остановитесь!!! Вы перекомите зверюшку')
-            self.__pass_time()
-    def play(self, fun = 4):
-        x2=int(input('Сколько времени вы хотите поиграть?'))
-        if x2 <= 10 and x2 > 0:
-            print("Уиии!")
-            self.boredom -= fun
-            if self.boredom < 0:
-                self.boredom -= x2
-            self.__pass_time()
-        elif x2 ==0:
-            print('Вы не любите свою зверюшку??? Вы к ней даже не притронулись')
-            self.boredom -= x2
-            self.__pass_time()
-            self.__pass_time()
-        elif x2 <0:
-            print('Вы вообще человек??? Зачем вы её пнули???')
-            self.__pass_time()          
-        elif x2 >= 11:
-            print('Зверюшка устала... Дайте ей поспать')
-            self.boredom -= fun
-            if self.boredom < 0:
-                self.boredom -= x2
-            self.__pass_time()
+    def number(self, number=-1):
+        
+        while number<0:
+          number=int(input('Сколько? '))
+        return number 
+ 
+    def eat(self, food=0):
+        food = self.number()
+        print("Мрр... Спасибо")
+        self.hunger -= food
+        if self.hunger < 0:
+            self.hunger = 0
+        self.__pass_time()
 
+    def play(self, fun=0):
+        fun = self.number()
+        print("Уииии!")
+        self.boredom -= fun
+        if self.boredom < 0:
+            self.boredom = 0
+        self.__pass_time()
 def main():
     crit_name = input("Как вы назовете свою зверюшку?: ")
     crit = Critter(crit_name)
@@ -116,11 +96,12 @@ def main():
             print("До свидания.")
 
         # беседа со зверюшкой
-        elif choice == "1":
+        elif choice == "1":           
             crit.talk()
         
         # кормление зверюшки
         elif choice == "2":
+            x = int(input())
             crit.eat()
          
         # игра со зверюшкой
